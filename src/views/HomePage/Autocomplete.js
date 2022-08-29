@@ -51,11 +51,11 @@ export class Autocomplete extends Component {
   }
   createGitHubReposPlugin = async () => {
     const repoQueryParams = qs.stringify({
-      ...{ per_page: 50 },
+      ...{ per_page: 25 },
       q: this.state.userInput,
     });
     const userQueryParams = qs.stringify({
-      ...{ per_page: 50 },
+      ...{ per_page: 25 },
       q: this.state.userInput,
     });
     const repoEndpoint = [repoUrl, repoQueryParams].join('?');
@@ -287,8 +287,16 @@ export class Autocomplete extends Component {
         optionList = <Loader />;
       }
     }
+    if (showOptions && userInput.length < 3) {
+      optionList = (
+        <div className="validation-err">Enter 3 or more characters</div>
+      );
+    }
     return (
       <React.Fragment>
+        <div className="autocomplete">
+          Search for any GitHub user or repository
+        </div>
         <div className="autocomplete-search">
           <input
             type="text"

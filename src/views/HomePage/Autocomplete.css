@@ -1,3 +1,17 @@
+.autocomplete {
+  font-weight: 700;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  margin-top: 2rem;
+}
+.validation-err {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: red;
+  text-align: center;
+  margin-top: 2rem;
+}
 .autocomplete-search {
   width: 40rem;
   margin: 10rem auto 2rem auto;
