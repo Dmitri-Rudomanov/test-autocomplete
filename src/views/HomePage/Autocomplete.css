@@ -1,0 +1,108 @@
+.autocomplete-search {
+  width: 40rem;
+  margin: 10rem auto 2rem auto;
+  text-align: right;
+  position: relative;
+}
+.autocomplete-search-box {
+  border: 4px solid transparent;
+  border-radius: 0.15rem;
+  font-size: 2rem;
+  width: 100%;
+  padding: 1rem;
+  transition: width 0.3s;
+}
+.autocomplete-search-box:focus {
+  width: 100%;
+  outline: none;
+  border: 0.3 solid #08a1b6;
+}
+.autocomplete-search-btn {
+  height: 100%;
+  width: 4em;
+  margin-top: -2em;
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+
+  opacity: 0.2;
+  background-color: transparent;
+  border: 0;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAACnElEQVR4AcXZsUsbYRjH8e+dh2s1SyAGJwMJuDj1BIcEhJQIOnTq5F+QOf0jIq79A7oFh7aYyVBEkaZDC3awECc1AUXRIqUQotfFocnjJe/dk+b9PKP65Md7z13ee3Uwk2SNHKmngs5TnbDLJQqjA+RYZ4OXuDzvkSYf+cAJ44fPAYFhHeAzVhlqBBGrRoax8KjSJYhRXap4KCVoECiqQQKFLC0CZbXIElOBOwJ9cUchzm2Y5QsveN4tdfY4o00HSDHHPKuUmOV5v/D5SSSJ0MXfIY+HBB55dkIvRIIIvJDR28dnFJ/9kHH0MFaVDehRxlSZnuxAFUMZunKQKBJFUQ4wXTIYqcmPZ5GoFmUEahjw5eJTJI6ivBD4jCS/csrEVZZfU4yQk5OPhrwjcoRygQ0GVdCQf73OUEfisaMkHk1HDJHkYeDX82jlBzo+kCSEyxruwDP/EK1DbsWnhHDFgNTpodWjLgY9NECKfnvoyS4p8wBngN5Z/ABtQK8dP0AH0OuYB5iMqfAAMque7HJtHmAOPdnlxjzAPHqyy5V5gFX0ZJfj8AAn9CvhoeVRol8zPMAuj/xrlhW0Vpg1D3ApflhGR3b4wTlDvI24i4u+w9y0uyVrM213U1qxuy2/Z8bui8m23VezgGW7L6cBLdIWXs9FBAsHFCLCJI9opFMKXEzkkEp/IbK0bEdI0LARQRzVWoigPKy+Z5tlWooIiuP6NhVmAEiPNwLkqHDEw5CGx2wyDQDRI8T7l80U19xwxTFNmpwzKM1nFsyeCw7jFymCAxYjrHDp8r9cUOCUYRZ4Bw6AxVV47QJYXIVXLliNsOSC1Qh/XLAa4ZuDmmIcH1l2AaytwhZfmaAkn/qOb7eYBofJekOJJX7znfccAvwFyB3OeNys7d4AAAAASUVORK5CYII=');
+}
+.autocomplete-search-btn:hover {
+  outline: none;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.autocomplete-search-btn:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
+ul.autocomplete-options {
+  display: block;
+  list-style: none;
+  width: 40rem;
+  transition: width 0.3s;
+  margin: auto;
+  position: relative;
+  border: 0.15rem solid #00b4cc;
+}
+
+ul.autocomplete-options li {
+  display: block;
+  background: white;
+  margin: 0.8rem auto;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 0.15rem;
+  border-bottom: 0.15rem solid #00b4cc;
+}
+ul.autocomplete-options li:hover {
+  font-weight: bold;
+  color: #00b4cc;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+ul.autocomplete-options li.option-active {
+  background: whitesmoke;
+  font-size: 1.5rem;
+  color: #00b4cc;
+}
+.no_autocomplete-options {
+  color: white;
+}
+
+.autocomplete-option__content-title {
+  display: flex;
+}
+.autocomplete-option__content-name {
+  font-weight: 700;
+}
+.autocomplete-option__content-stars {
+  align-items: center;
+  display: flex;
+  margin-left: 0.8rem;
+  position: relative;
+  top: 0.1rem;
+}
+.autocomplete-option__content-stars svg {
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: #ffa724;
+}
+.autocomplete-option__actions-btn {
+  pointer-events: none;
+}
+.autocomplete-option__content-description {
+  margin-top: 1rem;
+  width: 100%;
+  max-height: 20rem;
+  overflow-y: auto;
+}
