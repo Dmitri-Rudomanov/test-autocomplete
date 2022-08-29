@@ -111,8 +111,18 @@ ul.autocomplete-options li.option-active {
   height: 1.1rem;
   color: #ffa724;
 }
+.autocomplete-option__actions {
+  margin-top: 1rem;
+}
 .autocomplete-option__actions-btn {
-  pointer-events: none;
+  width: 2rem;
+  border: 0.08rem solid #ffa724;
+  border-radius: 0.1rem;
+  padding: 0.2rem;
+  transition: color 0.3s ease 0s;
+}
+.autocomplete-option__actions-btn:hover {
+  background-color: #ffd9a0;
 }
 .autocomplete-option__content-description {
   margin-top: 1rem;

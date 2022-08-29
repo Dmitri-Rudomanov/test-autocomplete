@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from 'react';
 import './Autocomplete.css';
 import qs from 'qs';
@@ -17,13 +18,13 @@ function debouncePromise(fn, time) {
   };
 }
 
-const debouncedFetch = debouncePromise(fetch, 300);
+const debouncedFetch = debouncePromise(fetch, 400);
 const repoUrl = `https://api.github.com/search/repositories`;
 const userUrl = `https://api.github.com/search/users`;
 
 export class Autocomplete extends Component {
   state = {
-    activeOption: 0,
+    activeOption: -1,
     filteredOptions: [],
     showOptions: false,
     userInput: '',
@@ -34,7 +35,7 @@ export class Autocomplete extends Component {
 
   onChange = e => {
     this.setState({
-      activeOption: 0,
+      activeOption: -1,
       showOptions: true,
       userInput: e.currentTarget.value,
     });
@@ -104,14 +105,17 @@ export class Autocomplete extends Component {
     const { activeOption, filteredOptions } = this.state;
 
     if (e.code === 'Enter') {
-      this.setState({
-        activeOption: 0,
-        userInput:
-          filteredOptions[activeOption].full_name ||
-          filteredOptions[activeOption].login,
-      });
+      if (activeOption !== -1) {
+        this.setState({
+          activeOption: 0,
+          userInput:
+            filteredOptions[activeOption].full_name ||
+            filteredOptions[activeOption].login,
+        });
+      }
+      return;
     } else if (e.code === 'ArrowUp') {
-      if (activeOption === 0) {
+      if (activeOption <= 0) {
         return;
       }
       this.setState({ activeOption: activeOption - 1 });
@@ -151,14 +155,13 @@ export class Autocomplete extends Component {
               }
               if (option.type) {
                 return (
-                  <li
-                    className={className}
-                    key={option.id}
-                    onClick={onClick}
-                    id={option.login}
-                  >
+                  <li className={className} key={option.id}>
                     User
-                    <div className="autocomplete-option__content">
+                    <div
+                      onClick={onClick}
+                      id={option.login}
+                      className="autocomplete-option__content"
+                    >
                       <div className="autocomplete-option__icon">
                         <img
                           src={option.avatar_url}
@@ -177,11 +180,9 @@ export class Autocomplete extends Component {
                     </div>
                     <div className="autocomplete-option__actions">
                       <a
-                        href={option.url}
+                        href={option.html_url}
                         target="_blank"
                         className="autocomplete-option__actions-btn"
-                        style={{ pointerEvents: 'none' }}
-                        rel="noreferrer"
                       >
                         <svg
                           viewBox="0 0 24 24"
@@ -201,11 +202,14 @@ export class Autocomplete extends Component {
                   <li
                     className={className}
                     key={option.id}
-                    onClick={onClick}
                     id={option.full_name}
                   >
                     <div className="autocomplete-option__wrapper">
-                      <div className="autocomplete-option__content">
+                      <div
+                        onClick={onClick}
+                        id={option.full_name}
+                        className="autocomplete-option__content"
+                      >
                         <div className="autocomplete-option__icon">
                           <img
                             src={option.owner.avatar_url}
@@ -245,11 +249,9 @@ export class Autocomplete extends Component {
                       </div>
                       <div className="autocomplete-option__actions">
                         <a
-                          href={option.url}
+                          href={option.html_url}
                           target="_blank"
                           className="autocomplete-option__actions-btn"
-                          style={{ pointerEvents: 'none' }}
-                          rel="noreferrer"
                         >
                           <svg
                             viewBox="0 0 24 24"
